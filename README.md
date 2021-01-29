@@ -22,4 +22,4 @@ Tutorial followed is [here](https://www.youtube.com/watch?v=Fdf5aTYRW0E&ab_chann
 Other useful resources for angular:
 [Docs](https://angular.io/)
 
-May follow up with one more angular tutorial...
+Tic-Tac-Toe youtube tutorial [here](https://www.youtube.com/watch?v=G0bBLvWXBvc&ab_channel=Fireship) and repo [here](https://github.com/fireship-io/angular-tic-tac-toe). May also want to look at [this](https://akveo.github.io/nebular/) for styling.
