@@ -19,5 +19,5 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   // properties:
-  title = 'angular-crash-todolist';
+  name: string = 'brad'
 }

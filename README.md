@@ -13,3 +13,6 @@ Other resources for future learning: <br>
 [TS docs](https://www.typescriptlang.org/docs) <br>
 
 May follow up with an Angular tutorial, especially since I need to learn that framework and it uses TS.
+
+### Angular
+Notations are within the files, mainly the index.html, app.* and newly generated components. For generation of components, using ```ng generate component path``` is quite nice and can be shortened by using ```ng g c path```.
