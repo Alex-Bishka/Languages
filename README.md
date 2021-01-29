@@ -15,4 +15,11 @@ Other resources for future learning: <br>
 May follow up with an Angular tutorial, especially since I need to learn that framework and it uses TS.
 
 ### Angular
-Notations are within the files, mainly the index.html, app.* and newly generated components. For generation of components, using ```ng generate component path``` is quite nice and can be shortened by using ```ng g c path```.
+Notations are within the files, mainly the index.html, app.* and newly generated components. For generation of components, using ```ng generate component path``` is quite nice and can be shortened by using ```ng g c path```. To start up the server use ```ng serve``` and the ```--open``` flag to open in browser immediately.
+
+Tutorial followed is [here](https://www.youtube.com/watch?v=Fdf5aTYRW0E&ab_channel=TraversyMedia) and the repo from the tutorial (if needed) is [here](https://github.com/bradtraversy/angular-crash-todolist)
+
+Other useful resources for angular:
+[Docs](https://angular.io/)
+
+May follow up with one more angular tutorial...
