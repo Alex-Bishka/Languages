@@ -5,8 +5,13 @@ import sys
 
 """
 This controls a lot of things for us like:
-    -spin up a server (this can be done with the following command: 'python3 manage.py runserver')
+    -spin up a server 
+        -this can be done with the following command: 'python3 manage.py runserver'
     -control migrations
+        -the command for this is: 'python3 manage.py migrate'
+            -this will migrate models that django created to the DB
+            -re-run for new apps w/models and migration files
+                -to migrate new apps w/modes run 'python3 manage.py makemigrations'
     -enter an interactive shell
     -communicate with a db
     -create an app (apps are separate parts of a djano project, they modularize the project)

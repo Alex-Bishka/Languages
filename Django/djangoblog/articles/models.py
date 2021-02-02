@@ -16,6 +16,18 @@ model filed types
      data type)
     -a charField is a small amount of text
     -a textField is a large amount of text
+
+After a model is creating, it must be migrated to the DB
+so that the DB is aware of the existence of the model - the
+DB will then be aware to create the table that the model 
+has described in the class
+
+You first need to create a migration file before migrating. This
+will track the changes that occur to the model file. This will be
+responsible for updating the DB.
+
+To create the migration file use the following command:
+    python3 manage.py makemigrations
 """
 class Article(models.Model):
     # class properties
