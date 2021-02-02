@@ -40,5 +40,5 @@ urlpatterns = [
     path('admin/', admin.site.urls), # created and shipped by Django for you
     path('about/', views.about, name='about'),
     path('', views.home, name='home'),
-    path('articles/', include("articles.urls")),
+    path('articles/', include("articles.urls")), # will include urls from our articles app
 ]

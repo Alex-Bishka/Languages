@@ -60,6 +60,8 @@ ROOT_URLCONF = 'djangoblog.urls'
 """
 you must put in the dir of your template folder into 'DIRS', otherwise
 Django will not know where they are
+
+django is pretty cool, it will look inside of each apps template dir
 """
 TEMPLATES = [
     {
