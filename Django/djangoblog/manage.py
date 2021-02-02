@@ -5,32 +5,44 @@ import sys
 
 """
 This controls a lot of things for us like:
-    -spin up a server 
+    1) spin up a server 
         -this can be done with the following command: 'python3 manage.py runserver'
-    -control migrations
+    2) control migrations
         -the command for this is: 'python3 manage.py migrate'
             -this will migrate models that django created to the DB
             -re-run for new apps w/models and migration files
                 -to migrate new apps w/modes run 'python3 manage.py makemigrations'
-    -enter an interactive shell
-    -communicate with a db
-    -create an app (apps are separate parts of a djano project, they modularize the project)
-        -the command for this is 'python3 mangage.py startapp app_name'
-        -note, in django the 'app_name' is typical plural
-        -views are rendered w/in apps
-        -url files are separate within each individual app
-    -open an interactive shell
-        -the command: 'python3 manage.py shell'
-        -not quite sure how this differes from ipython3...
-        -in this shell we can interact with the DB
+    3) communicate with a db
         -some useful commands:
-            -from location_of_models import class_name
+            -from location_of_models import class_name (if in interactive shell)
                 i.e. from articles.models import Article
             -class_name.objects.all() (lists all articles)
             -how to create an instance:
                 instance_name = class_name()
             -instance.property = value_to_set_property
             -instance.save() (stores in DB)
+    4) create an app (apps are separate parts of a djano project, they modularize the project)
+        -the command for this is 'python3 mangage.py startapp app_name'
+        -note, in django the 'app_name' is typical plural
+        -views are rendered w/in apps
+        -url files are separate within each individual app
+    5) open an interactive shell
+        -the command: 'python3 manage.py shell'
+        -not quite sure how this differes from ipython3...
+        -in this shell we can interact with the DB
+    6) set-up django admin area
+        -to create a super user:
+            'python3 manage.py createsuperuser'
+            -this will then prompt you for:
+                Username: alex (for this tutorial) 
+                Email addr (can be left blank):
+                Password: test1234 (for this tutorial)
+            -a superuser will have acess to the admin area
+        -the admin area is an area for site admins to control the
+         contents of the website or the contents of the DBS
+        -we can create instances of models such as articles or something else
+        -we can control users of our websites
+        -and a lot more!
 
 Django project come automatically configured with sqlite (store our data for us)
     -we can change the db down the line
