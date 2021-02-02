@@ -19,6 +19,18 @@ This controls a lot of things for us like:
         -note, in django the 'app_name' is typical plural
         -views are rendered w/in apps
         -url files are separate within each individual app
+    -open an interactive shell
+        -the command: 'python3 manage.py shell'
+        -not quite sure how this differes from ipython3...
+        -in this shell we can interact with the DB
+        -some useful commands:
+            -from location_of_models import class_name
+                i.e. from articles.models import Article
+            -class_name.objects.all() (lists all articles)
+            -how to create an instance:
+                instance_name = class_name()
+            -instance.property = value_to_set_property
+            -instance.save() (stores in DB)
 
 Django project come automatically configured with sqlite (store our data for us)
     -we can change the db down the line

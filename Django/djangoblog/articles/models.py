@@ -37,3 +37,14 @@ class Article(models.Model):
     date = models.DateTimeField(auto_now_add=True) # automatically populates this field with now time
     # add in thumbnail later
     # add in author later
+
+    # self will be the instance of the article
+    def __str__(self):
+        """
+        This should return the title of an instance of an Article
+        when we get the article objects from the server.
+
+        So Article.objects.all() will return the title of the articles
+        rather than something useless like 'Article object (1)'
+        """
+        return self.title
