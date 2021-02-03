@@ -1,0 +1,22 @@
+{% load static from static %}
+
+<!--
+    This is our base layout that will be repeated throughout the 
+    project. This will reduce redundant html code, and any new code
+    will be added as the block content.
+-->
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Articles</title>
+        <link rel="stylesheet" href="{% static 'styles.css' %}">
+    </head>
+    <body>
+        <div class="wrapper">
+            {% block content %}
+            {% endblock %}
+        </div>
+    </body>
+</html>
