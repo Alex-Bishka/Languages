@@ -16,6 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from . import views
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 """
 This is where we control routes/how we send users to different pages
@@ -34,6 +35,8 @@ code:
     -also note that the name_of_route should probably something like app_name/
      such that future urls created in the app will extend off of app_name/
      (i.e a url of about in the new app will then be app_name/about/)
+
+This is where we will tell Django to serve up our static files
 """
 
 urlpatterns = [
@@ -42,3 +45,5 @@ urlpatterns = [
     path('', views.home, name='home'),
     path('articles/', include("articles.urls")), # will include urls from our articles app
 ]
+
+urlpatterns += staticfiles_urlpatterns()
