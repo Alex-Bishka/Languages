@@ -48,3 +48,11 @@ class Article(models.Model):
         rather than something useless like 'Article object (1)'
         """
         return self.title
+
+    def snippet(self):
+        """
+        Returns a snippet of the body of a blog post
+
+        Used for a preview of the article
+        """
+        return f"{self.body[:50]}..."
