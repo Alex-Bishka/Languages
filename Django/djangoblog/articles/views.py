@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from .models import Article
 
 # Create your views here.
 
@@ -18,4 +19,7 @@ in the templates folder in the root dir
 def article_list(request):
     """
     """
-    return render(request, 'articles/article_list.html') # here is where namespacing is nice
+    # the data we will send to the template
+    articles = Article.objects.all().order_by('date')
+
+    return render(request, 'articles/article_list.html', {'articles': articles}) # here is where namespacing is nice
