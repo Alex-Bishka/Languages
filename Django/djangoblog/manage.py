@@ -27,6 +27,7 @@ This controls a lot of things for us like:
         -note, in django the 'app_name' is typical plural
         -views are rendered w/in apps
         -url files are separate within each individual app
+        -don't forget to add the app within the 'INSTALLED_APPS' list in settings.py in the main folder
     5) open an interactive shell
         -the command: 'python3 manage.py shell'
         -not quite sure how this differes from ipython3...
