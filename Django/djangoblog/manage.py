@@ -12,6 +12,7 @@ This controls a lot of things for us like:
             -this will migrate models that django created to the DB
             -re-run for new apps w/models and migration files
                 -to migrate new apps w/modes run 'python3 manage.py makemigrations'
+                -followed by 'python3 manage.py migrate'
     3) communicate with a db
         -some useful commands:
             -from location_of_models import class_name (if in interactive shell)
