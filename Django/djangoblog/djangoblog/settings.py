@@ -135,3 +135,12 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'assets'),
 )
+
+# some lines for adding media
+# we will have a media url, that will serve like the static url
+# note the name does not matter
+MEDIA_URL = '/media/'
+
+# the folder django uploads images to
+# this will create a media folder inside of our base dir (djangoblog)
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
