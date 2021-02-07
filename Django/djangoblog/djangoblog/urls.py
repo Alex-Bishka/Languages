@@ -17,6 +17,8 @@ from django.contrib import admin
 from django.urls import path, include
 from . import views
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+from django.conf.urls.static import static  # allow django to serve up media files
+from django.conf import settings  # this is from our settings.py file
 
 """
 This is where we control routes/how we send users to different pages
@@ -46,4 +48,8 @@ urlpatterns = [
     path('articles/', include("articles.urls")), # will include urls from our articles app
 ]
 
+# tells django where to serve the static files
 urlpatterns += staticfiles_urlpatterns()
+
+# tells django where to serve the media files
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
