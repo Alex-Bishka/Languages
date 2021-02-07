@@ -46,6 +46,7 @@ urlpatterns = [
     path('about/', views.about, name='about'),
     path('', views.home, name='home'),
     path('articles/', include("articles.urls")), # will include urls from our articles app
+    path('accounts/', include("accounts.urls")), # will include urls from our accounts app
 ]
 
 # tells django where to serve the static files
