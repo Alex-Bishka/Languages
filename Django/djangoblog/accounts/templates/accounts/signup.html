@@ -2,4 +2,12 @@
 
 {% block content %}
     <h1>Signup</h1>
-{% endblock%}
+    <!--
+        method refers to CRUD requests: post request in this case (sending data to server)
+        action: the url we are submitting (in this case) the data to
+    -->
+    <form class="site-form" action="/accounts/signup" method="post">
+        {{ form }}
+        <input type="submit" value="Signup">
+    </form>
+{% endblock %}
