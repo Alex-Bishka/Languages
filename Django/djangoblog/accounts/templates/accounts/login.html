@@ -1,0 +1,20 @@
+{% extends 'base_layout.html' %}
+
+{% block content %}
+    <h1>Login</h1>
+    <!--
+        method refers to CRUD requests: post request in this case (sending data to server)
+        action: the url we are submitting (in this case) the data to - not that in this case
+                we are using python logic to tell django to grab the login url that is under
+                the accounts namespace
+    -->
+    <form class="site-form" action="{% url 'accounts:login' %}" method="post">
+        <!--
+            the token tells django that the post request is coming from our
+            site, to it is okay (otherwise we get an error)
+        -->
+        {% csrf_token %}
+        {{ form }}
+        <input type="submit" value="Login">
+    </form>
+{% endblock %}
