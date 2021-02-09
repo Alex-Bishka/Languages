@@ -3,5 +3,16 @@
 {% block content %}
     <div class="create-article">
         <h2>Create an awesome new article</h2>
+        <!--
+            recall the csrf_token is a security measure for post requests
+
+            the enctype stands for encryption type, this is for encoding the form
+            data that is uploaded (for the choose file)
+        -->
+        <form class="site-form" action="{% url 'articles:create' %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form }}
+            <input type="submit" value="Create">
+        </form>
     </div>
 {% endblock %}
