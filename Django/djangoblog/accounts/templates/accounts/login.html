@@ -15,6 +15,16 @@
         -->
         {% csrf_token %}
         {{ form }}
+        <!--
+            the html under our if statement will only appear if the next
+            parameter occurs
+
+            the input tag has a value of request.GET.next, which is whatever
+            the next parameter (in the url) is set to
+        -->
+        {% if request.GET.next %}
+            <input type="hidden" name="next" value="{{ request.GET.next }}">
+        {% endif %}
         <input type="submit" value="Login">
     </form>
 {% endblock %}
