@@ -1,4 +1,4 @@
-{% load static from static %}
+{% load static %}
 
 <!--
     This is our base layout that will be repeated throughout the 
@@ -14,7 +14,7 @@
         <link rel="stylesheet" href="{% static 'styles.css' %}">
     </head>
     <body>
-        <div class="wrapper">
+        <header class="wrapper">
             <h1><a href="{% url 'home' %}"><img src="{% static 'logo.png' %}"/></a></h1>
             <nav>
                 <ul>
@@ -32,8 +32,10 @@
                     {% endif %}
                 </ul>
             </nav>
-            {% block content %}
-            {% endblock %}
-        </div>
+            <div class="wrapper">
+                {% block content %}
+                {% endblock %}
+            </div>
+        </header>
     </body>
 </html>
