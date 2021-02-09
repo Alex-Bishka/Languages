@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
 
@@ -28,6 +29,11 @@ responsible for updating the DB.
 
 To create the migration file use the following command:
     python3 manage.py makemigrations
+
+In order to associate a user with an article for the author field,
+we need to use a foreign key. A foreign key is a way to associate
+a record from one model (in this case the article model) with a record
+from another model (in this case the user model).
 """
 class Article(models.Model):
     # class properties
@@ -36,7 +42,7 @@ class Article(models.Model):
     body = models.TextField()
     date = models.DateTimeField(auto_now_add=True) # automatically populates this field with now time
     thumb = models.ImageField(default='default.png', blank=True)
-    # add in author later
+    author = models.ForeignKey(User, default=None, on_delete=models.DO_NOTHING,)
 
     # self will be the instance of the article
     def __str__(self):
