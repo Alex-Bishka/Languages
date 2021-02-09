@@ -44,7 +44,9 @@ def article_create(request):
     if request.method == 'POST':
         form = forms.CreateArticle(request.POST, request.FILES)
         if form.is_valid():
-            # TODO save form to db
+            instance = form.save(commit=False)  # saves form to db, commit waits for saving until something is done with instance
+            instance.author = request.user
+            instance.save()  # now we are committing!
             return redirect('articles:list')
     else:
         form = forms.CreateArticle()
