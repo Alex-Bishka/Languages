@@ -19,6 +19,7 @@ from . import views
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.conf.urls.static import static  # allow django to serve up media files
 from django.conf import settings  # this is from our settings.py file
+from articles import views as article_views
 
 """
 This is where we control routes/how we send users to different pages
@@ -44,7 +45,7 @@ This is where we will tell Django to serve up our static files
 urlpatterns = [
     path('admin/', admin.site.urls), # created and shipped by Django for you (our admin section)
     path('about/', views.about, name='about'),
-    path('', views.home, name='home'),
+    path('', article_views.article_list, name='home'),  # editing home page so that we go to the articles list
     path('articles/', include("articles.urls")), # will include urls from our articles app
     path('accounts/', include("accounts.urls")), # will include urls from our accounts app
 ]
