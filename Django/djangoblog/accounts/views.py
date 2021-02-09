@@ -32,8 +32,14 @@ def login_view(request):
             user = form.get_user()
             login(request, user)
 
-            # send user to the articles page
-            return redirect('articles:list')
+            # send user to the appropriate page
+            # if there is a next parameter in the 
+            # login url
+            if 'next' in request.POST:
+                return redirect(request.POST.get('next'))
+            else:
+                # otherwise send them to the articles list
+                return redirect('articles:list')
     else:
         # get request
         form = AuthenticationForm()
