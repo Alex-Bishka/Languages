@@ -1,6 +1,7 @@
 # Django Guide
 
-This guide is created via the [Django docs](https://docs.djangoproject.com/en/3.1/)
+This guide is created via information from the [Django docs](https://docs.djangoproject.com/en/3.1/). This is simply meant to improve
+my understanding of Django.
 
 ## Overview
 
