@@ -51,8 +51,7 @@ urlpatterns = [
 ]
 
 # tells django where to serve the static files
-#urlpatterns += staticfiles_urlpatterns()
-urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+urlpatterns += staticfiles_urlpatterns()
 
 # tells django where to serve the media files
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
