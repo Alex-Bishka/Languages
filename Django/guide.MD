@@ -90,7 +90,7 @@ You are not forced to use Django's template system if another is preferred. The 
 abstraction layers can be used, read files from somewhere else, it is very flexible. This is because each piece of Django is 
 decoupled from the next (so models, views, templates are separate from each other). 
 
-### Contiuation
+### Continuation
 
 Note, this is just the surface of Django. Some other useful features include: a [caching framework](https://docs.djangoproject.com/en/3.1/topics/cache/), a [syndication framework](https://docs.djangoproject.com/en/3.1/ref/contrib/syndication/), and more attractive automatically generated admin features.
 
@@ -234,7 +234,6 @@ class Person(models.Model):
 This model has a couple of custom methods. The last method in this example is a property. You are free to override pre-defined
 methods (and ones you write) to alter behavior. Just remember to call the superclass to get the orginal method to run.
 
-#### Todo: model inheritance, views, template layer, maybe other sections
 
 
 ## Views
