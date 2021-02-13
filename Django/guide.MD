@@ -96,6 +96,9 @@ Note, this is just the surface of Django. Some other useful features include: a 
 
 
 
+
+
+
 ## Models
 
 A model is the single, definitive source of information about your data. It contains essential fields and behaviors of the data
@@ -231,4 +234,17 @@ class Person(models.Model):
 This model has a couple of custom methods. The last method in this example is a property. You are free to override pre-defined
 methods (and ones you write) to alter behavior. Just remember to call the superclass to get the orginal method to run.
 
-#### Todo: model inheritance
+#### Todo: model inheritance, views, template layer, maybe other sections
+
+
+## Views
+
+## Template Layer
+
+## Forms
+
+## Development Process
+
+## The admin
+
+## Security
