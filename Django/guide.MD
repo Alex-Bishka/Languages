@@ -13,7 +13,7 @@ models.
 
 **An example:**
 
-`
+```
 mysite/news/models.py
 
 from django.db import models
@@ -32,7 +32,7 @@ class Article(models.Model):
 
     def __str__(self):
         return self.headline
-`
+```
 
 The `makemigrations` command looks at all available models and cretes migrations for whichever don't already exist. The 
 `migrate` command runs the migrations and creates tables in the db. This seems pretty useful for changing/creating the db schema.
@@ -97,21 +97,21 @@ to a database column.
 
 **Example (model then representation of model in db table):**
 
-`
+```
 from django.db import models
 
 class Person(models.Model):
     first_name = models.CharField(max_length=30)
     last_name = models.CharField(max_length=30)
-`
+```
 
-`
+```
 CREATE TABLE myapp_person (
     "id" serial NOT NULL PRIMARY KEY,
     "first_name" varchar(30) NOT NULL,
     "last_name" varchar(30) NOT NULL
 );
-`
+```
 
 The name of the table comes from model metadata, but can be overriden. The id field is added automatically, but can also
 be overriden. `CREATE TABLE` SQL is formatted using PostgresSQL syntax, but it's worth noting Django uses SQL tailored to the db backend
@@ -143,7 +143,7 @@ as a class attribute of your model. `ForeignKey` requires a positional argument:
 
 **An example:**
 
-`
+```
 from django.db import models
 
 class Manufacturer(models.Model):
@@ -153,7 +153,7 @@ class Manufacturer(models.Model):
 class Car(models.Model):
     manufacturer = models.ForeignKey(Manufacturer, on_delete=models.CASCADE)
     # ...
-`
+```
 
 The car model has a manufacturer. However, that manufacturer makes multiple cars, but each car only has one manufacturer. It is
 suggested that the name of a `ForeignKey` field be the name of model, lowercase.
@@ -164,7 +164,7 @@ as an argument.
 
 **An example:**
 
-`
+```
 from django.db import models
 
 class Topping(models.Model):
@@ -174,7 +174,7 @@ class Topping(models.Model):
 class Pizza(models.Model):
     # ...
     toppings = models.ManyToManyField(Topping)
-`
+```
 
 A pizza can have multiple toppings and a topping can be on multiple pizzas. It is suggested that the name of a `ManyToManyField` be
 a plural describing the set of related model objects. It does not matter which model contains the `ManyToManyField`, but it should
@@ -192,7 +192,7 @@ one place, the model.
 
 **An example:**
 
-`
+```
 from django.db import models
 
 class Person(models.Model):
@@ -214,7 +214,7 @@ class Person(models.Model):
     def full_name(self):
         "Returns the person's full name."
         return '%s %s' % (self.first_name, self.last_name)
-`
+```
 
 This model has a couple of custom methods. The last method in this example is a property. You are free to override pre-defined
 methods (and ones you write) to alter behavior. Just remember to call the superclass to get the orginal method to run.
