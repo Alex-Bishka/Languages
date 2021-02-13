@@ -7,6 +7,8 @@ my understanding of Django.
 
 The purpose of Django is to make common web-dev tasks fast and easy.
 
+### Models
+
 Django comes with an object relational mapper (a technique for converting types using oop - creates a virtual object database) in which
 the db layout can be described with Python code. The data model syntax (models - more to come) offers many rich ways of representing
 models. 
@@ -40,16 +42,22 @@ The `makemigrations` command looks at all available models and cretes migrations
 This offers a free, rich, scalable Python API for any data that needs to be handled. The API is created on the fly too, so no
 need for code generation (I'm not quite sure what this means).
 
+### Admin
+
 Django comes with an admin interface, which allows super sers to add/change/delete/etc objects. This is production ready and the only
 catch is that the model needs to be registered in the adming site (this is taken care of in admin.py).
 
 One workflow in Django projects is to create models and get the admin sites up and running as fast as possible to start populating data.
 Later the data can be funneled into a GUI to display.
 
+### URLs
+
 Django allows for customization and flexiblility in URLs. This is managed by a Python module called URLconf. This offers a way to
 create a table of contents (of sorts) for the project. The URL paths created map to Python callback functions called views. The paths
 serve as a way to capture values from the URLs. So, when someone requests a page, Django runs through each path, **in order**, and stops at the first one that mathces the requested URL (no matches lead to a 404 error). Note, this process is really fast b/c the paths are
 compiled into regex expressions at load time (that's pretty neat).
+
+### Views
 
 Once a match occurs, Django calls the given view, which is a Python function. Each view gets passed a request object - which contains
 metadata - and the values captured in the pattern.
@@ -60,6 +68,8 @@ For example, say a user requested the URL "/articles/2005/05/39323", then Django
 Django allows you to write your own views. Views must be responsible for doing one of two things: returning an HttpResponse object
 containing the content for the request page, or raising an exception such as Http404. Once this responsibility is taken care of,
 the details are up to you.
+
+### Templates
 
 Additionally, Django allows you to design your templates (or connect to a frontend frame work). Django has a template search path,
 which minimizes the redundancy among templates. In Django settings, you can specify a list of directories to check for templates
@@ -79,6 +89,8 @@ and reduced redundancy. Additionally, you can customize via blocks (i.e. filling
 You are not forced to use Django's template system if another is preferred. The same applies to Django's db API too. Other db
 abstraction layers can be used, read files from somewhere else, it is very flexible. This is because each piece of Django is 
 decoupled from the next (so models, views, templates are separate from each other). 
+
+### Contiuation
 
 Note, this is just the surface of Django. Some other useful features include: a [caching framework](https://docs.djangoproject.com/en/3.1/topics/cache/), a [syndication framework](https://docs.djangoproject.com/en/3.1/ref/contrib/syndication/), and more attractive automatically generated admin features.
 
