@@ -22,4 +22,7 @@ def about(request):
 
     render will allow us to display html files
     """
+    if request.method == 'GET':
+        return HttpResponse(content='hello')
+    
     return render(request, 'about.html')
