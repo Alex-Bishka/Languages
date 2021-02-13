@@ -239,6 +239,51 @@ methods (and ones you write) to alter behavior. Just remember to call the superc
 
 ## Views
 
+A clean, elegant URL scheme is an important detail in a strong project. Django allows you to design URLs however you want, with no
+framework limitations. To design URLs for a project, you create a Python module informally called a URLconf. This module is pure
+Python code and is a mapping b/w URL path expressions to Python functions (views). This mapping can be short, long, reference other
+mappings, etc. Since it is pure Python code, it can be constructed dynamically.
+
+When a user requests a page from a Django site, this is the algorithm the system follows to determine which Python code to 
+execute:
+
+    1.  Django determines the root URLconf module to use. Ordinarily, this is the value of the `ROOT_URLCONF` setting, but if the
+        incoming `HttpRequest` object has a `urlconf` attribute (set by middleware), its value will be used in place of the
+        `ROOT_URLCONF` setting.
+    2.  Django loads that Python module and looks for the variable `urlpatterns`. This should be a sequence of `django.urls.path()`
+        and/or `django.urls.re_path()` instances.
+    3.  Django runs through each URL pattern, in order, and stops at the first one that matches the requested URL, matching against
+        `path_info`.
+    4.  Once one of the URL pattern matches, Django imports and calls the given view, which is a Python function (or a class based
+        view). The view gets passed the following arguments:
+            - An instances of `HttpRequest`
+            - If the matched URL pattern contained no named groups, then the matches from the regular expression are provided as
+              positional arguments
+            - The keyword arguments made up of any named parts matched by the path expression that are provided, overriden by and
+              arguemnets specified in the optional `kwargs` argument to `django.urls.path()` or `django.urls.re_prath()`
+    5.  If no URL pattern matches, or if an exception is raised during any point in this process, Django invokes an appropriate error
+        handling view.
+
+Note, to capture a value from the URL, use angle brackets. You can create your own converters, or use regular expressions, just make
+sure you use `re_path()` instead of `path()`.
+
+Also note, the URLconf doesn't look at the request method. In other words, all request methods - **POST**, **GET**, **HEAD**, etc - will
+be routed to the same function for the same URL (in other words, our view will handle request methods).
+
+A convenient trick is to specify default parameters for your views' arguments.
+
+The performance of this is blazingly fast because each regex in `urlpatterns` is complied the first time it's accessed. Note that
+`urlpatterns` should be a sequence of `path()` and/or `re_path()` instances. Paths can "include" other URLconf modules. This "roots"
+a set of URLs below other ones. This is done by using `include()`. Pretty useful for adding URLs/URLconfs for other apps within
+the Django process. An included URLconf still receives caputred parameters from the parent URLconf.
+
+You can include a `name` parameter within a url path, which can then be used in Python code or in templates. This saves a lot of
+work, as urls can change freely while the rest of the code stays the same.
+
+URL namespaces are useful for maintaining organzied code. Specifically, instance namespaces are extremely useful. Namespaced URLs
+are specified using the **:** operator. Namespaces can be nested if needed. Namespacing can also be applied to URLconfs. In this case,
+the `include()` a string must be passed in the form `module_name.urls`. Alternatively, a new url pattern can be used.
+
 ## Template Layer
 
 ## Forms
