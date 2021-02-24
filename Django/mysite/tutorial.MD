@@ -126,6 +126,19 @@ Three step guide to making model changes:
     2. Run `python3 manage.py makemigrations` to create migrations for those changes
     3. Run `python3 manage.py migrate` to apply those changes to the db
 
+## Django Admin
+
+Django provies an admin interface for models. It's a great way for site managers to manage models. 
+
+First, we will need to create a user who can login to the admin site. This is done by running `python manage.py createsuperuser`. Then,
+enter your desired username, email address, and password (note: **username=alex**, skipped email, **password=123456**).
+
+We can then go to the admin page (after running the server) by going [http://127.0.0.1:8000/admin/](http://127.0.0.1:8000/admin/). Groups
+and users will be in the admin site by default.
+
+In order for apps to appear in the admin site, we need to alert the admin of the model objects we want to store. To do this, we will
+need to register the classes within a model on the `admin.py` file of an app.
+
 ## Command Notes
 
 By default, the `runserver` command starts the development server on the internal IP at port 8000. If you want to change the server's
@@ -157,7 +170,7 @@ The `check` command is very useful. It will check to see if there are any proble
 the db. The full command is `python3 manage.py check`.
 
 Django also comes with an interactive Python shell that will let you play aorund with the free API Django gives you. Simply invoke the 
-command `python3 manage.py shell`.
+command `python3 manage.py shell`. For more information on what you can do in the shell, [this](https://docs.djangoproject.com/en/3.1/ref/models/relations/) is a good start. As well as [this](https://docs.djangoproject.com/en/3.1/topics/db/queries/#field-lookups-intro) for fields. This [link](https://docs.djangoproject.com/en/3.1/topics/db/queries/) offers detials on the entire API.
 
 ## Good to Know
 
