@@ -139,6 +139,23 @@ and users will be in the admin site by default.
 In order for apps to appear in the admin site, we need to alert the admin of the model objects we want to store. To do this, we will
 need to register the classes within a model on the `admin.py` file of an app.
 
+## Views
+
+A view is a "type" of web page in your Django application that generally serves a specific function and has a specific template. For
+example, in a blog application, you might have the following views:
+    - Blog homepage (displays the latest few entries)
+    - Entry "detail" page (permalink page for single entry)
+    - Year-based archive page (displays all months with entries in given year)
+    - Month-based archive page (display all the day with entries in given month)
+    - Day-based archive page (displays all entries in the given day)
+    - Comment action (handles postin comments to a given entry)
+
+In Django, web pages and other content are delivered by views. Each view si represented by a Python function (or method, in the case of
+class-based views). Django will choose a view by examining the URL that is requested. To get a from a URL to a view, Django utilizes
+URLconfs (maps URL patterns to views).
+
+Once a view is created, it needs to be wired into the appropriate app url file via a call to `path()`.
+
 ## Command Notes
 
 By default, the `runserver` command starts the development server on the internal IP at port 8000. If you want to change the server's
