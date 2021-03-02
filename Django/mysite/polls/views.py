@@ -19,12 +19,18 @@ class IndexView(generic.ListView):
 
 class DetailView(generic.DetailView):
     """
+    This is a generic view. Each generic view needs to know
+    what model it will be acting upon. This is provided using
+    the model attribute. The detail view expects the primary key
+    value captured from the url to be called 'pk' so we changed
+    question_id to pk for the generic views.
     """
     model = Question
     template_name = 'polls/detail.html'
 
 class ResultsView(generic.DetailView):
     """
+    This is a generic view
     """
     model = Question
     template_name = 'polls/results.html'
