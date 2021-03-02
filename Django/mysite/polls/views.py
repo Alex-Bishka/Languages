@@ -1,48 +1,57 @@
 from django.shortcuts import render, get_object_or_404
-from django.http import HttpResponse, Http404
+from django.http import HttpResponseRedirect
+from django.urls import reverse
+from django.views import generic
 #from django.template import loader  # no longer needed b/c of render shortcut
 
-from .models import Question
+from .models import Question, Choice
+
 # Create your views here.
+class IndexView(generic.ListView):
+    """
+    """
+    template_name = 'polls/index.html'
+    context_object_name = 'latest_question_list'
 
-def index(request):
-    """
-    index will display the latest 5 poll questions in the system, separated by commans,
-    according to the publication date.
+    def get_queryset(self):
+        """Return the last five published questions."""
+        return Question.objects.order_by('-pub_date')[:5]
 
-    render takes the request as its first arg, a template name as the second,
-    and a dictionary as the optional third. It returns an HttpResponse object
-    of the given template rendered with the given context.
+class DetailView(generic.DetailView):
     """
-    latest_question_list = Question.objects.order_by('-pub_date')[:5]
-    context = {
-        'latest_question_list': latest_question_list
-    }
-    return render(request, 'polls/index.html', context)
+    """
+    model = Question
+    template_name = 'polls/detail.html'
 
-def detail(request, question_id):
+class ResultsView(generic.DetailView):
     """
-    Returns a simple template response.
-
-    get_object_or_404 takes in a Django model as its first arg and
-    an arbitrary number of keywords to pss to the get part of the model
-    manager. A 404 error is raised if the object does not exist.
     """
-    question = get_object_or_404(Question, pk=question_id)
-    return render(request, 'polls/detail.html', {'question': question})
-
-def results(request, question_id):
-    """
-    Returns a simple template response.
-    """
-    response = "You're looking at the results of questions %s."
-    return HttpResponse(response % question_id)
+    model = Question
+    template_name = 'polls/results.html'
 
 def vote(request, question_id):
     """
-    Returns a simple template response.
+    This function will increase the number of votes a selected
+    question have, if it exists, and then redirect us to the results
+    page. If said question fails, we are given a 404 error!
+
+    Reverse will take us to the view specified by arg1 along with the
+    variable portion of the url specified by arg2.
     """
-    return HttpResponse("You're voting on question %s." % question_id)
+    question = get_object_or_404(Question, pk=question_id)
+    try:
+        # this will obtain the id of the selected choice as a string
+        selected_choice = question.choice_set.get(pk=request.POST['choice'])
+    except (KeyError, Choice.DoesNotExist):
+        # error message if choice isn't given
+        return render(request, 'polls/detail.html', {'question': question, 'error_message': "You didn't select a choice."})
+    else:
+        selected_choice.votes += 1
+        selected_choice.save()
+        # redirected to this url - always return a redirect after successfully
+        # dealing with POST data - prevents data from being posted twice if the
+        # user hits the back button
+        return HttpResponseRedirect(reverse('polls:results', args=(question_id,)))
 
 
 #################################################################################################################3
