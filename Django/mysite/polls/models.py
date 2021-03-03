@@ -19,7 +19,8 @@ class Question(models.Model):
     # I think this well tell us if the question was published within
     # the past day or not
     def was_published_recently(self):
-        return self.pub_date >= timezone.now() - datetime.timedelta(days=1)
+        now = timezone.now()
+        return now - datetime.timedelta(days=1) <= self.pub_date <= now
 
 class Choice(models.Model):
     """
